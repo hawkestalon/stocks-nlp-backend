@@ -3,6 +3,12 @@
 This is the backend for the Stocks Natural Language Final Project, USU - CS5890
 Front end is [here](https://github.com/austinGENEreeve/stock-front-end)
 
+## Running the project
+
+1. npm install
+2. npm start
+3. Use a tool like postman to make requests
+
 ## Routes
 
 There are currently two routes
