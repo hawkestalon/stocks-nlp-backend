@@ -1,16 +1,10 @@
 'use strict'
 
 const express = require('express')
+const { app, port } = require('./server')
 
-const app = express();
-const port = 3000;
-
-app.get('/ping', pong);
-
-function pong(req, res) {
-  res.send('pong')
+function main() {
+  app.listen(port, () => {console.log(`Listening on port ${port}`)});
 }
 
-app.listen(port, () => {console.log(`Listening on port ${port}`)});
-
-
+main();
