@@ -23,8 +23,8 @@ function pingController(req, res) {
   res.send(response);
 }
 
-function getDataController(req, res) {
-  const response = getData(req.body);
+async function getDataController(req, res) {
+  const response = await getData(req.body);
   res.send(response);
 }
 
