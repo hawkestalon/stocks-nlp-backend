@@ -26,8 +26,8 @@ async function runSentimentAnalysis(stocks) {
 
 async function readDataFromJson(dir, stockString) {
   const data = [];
-  console.log(stocks)
   const stocks = stockString.split(',');
+  console.log(stocks)
   for(let index in stocks) {
     const result = await fs.readFile(`${dir}/sentiment/data/${stocks[index]}.json`, {encoding: 'utf-8'})
     data.push(result);
