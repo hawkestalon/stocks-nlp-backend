@@ -6,7 +6,7 @@ const { getData } = require('./executors/get-data');
 const { pong } = require('./executors/pong');
 
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001;
 
 // middleware goes here
 app.use(express.urlencoded({ extended: false}));
