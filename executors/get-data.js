@@ -13,13 +13,13 @@ async function getData(body) {
   const data = await runSentimentAnalysis(stocks);
   console.log('look at this cool data ', data);
   return {
-    stocks: JSON.parse(data)
+    stocks: data
   }
 }
 
 async function runSentimentAnalysis(stocks) {
   const cwd = spawnSync('pwd', {encoding: 'utf-8'}).stdout.slice(0, -1);
-  const python = spawnSync('python', ['sentiment/main.py', cwd, stocks], {encoding: 'utf-8', cwd});
+  const python = spawnSync('python3', ['sentiment/main.py', stocks], {encoding: 'utf-8', cwd});
   console.log(python)
   return readDataFromJson(cwd, stocks);
 }

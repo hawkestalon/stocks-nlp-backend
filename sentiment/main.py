@@ -21,7 +21,7 @@ else:
         filtered_by_ticker = filter_by_ticker(stocks_posts_list, ticker)
         count = count_sentiment(apply_spacy_pipe(filtered_by_ticker))
         topics = get_topics(filtered_by_ticker)
-        print(ticker)
+        print("TICKER",ticker)
         print(f"positive: {count[0]}, negative: {count[1]}")
         print(topics)
 
