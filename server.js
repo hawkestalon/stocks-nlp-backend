@@ -24,8 +24,14 @@ function pingController(req, res) {
 }
 
 async function getDataController(req, res) {
-  const response = await getData(req.body);
-  res.send(response);
+  try {
+    const response = await getData(req.body);
+    res.send(response);
+  } catch (err) {
+    console.error(err);
+    res.statusCode = 500;
+    res.send("Internal Error")
+  }
 }
 
 module.exports = {
