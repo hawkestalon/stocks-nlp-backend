@@ -28,6 +28,7 @@ async function getDataController(req, res) {
     const response = await getData(req.body);
     res.send(response);
   } catch (err) {
+    console.err(err);
     res.statusCode = 500;
     res.send("Internal Error")
   }

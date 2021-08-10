@@ -14,6 +14,8 @@ else:
     stocksDF = remove_duplicates(stocksDF, 'content')
     stocks_posts_list = create_text_list(stocksDF, 'content')
 
+    print(sys.argv)
+
     # for each stock ticker, create a filtered list and then send it for sentiment analysis
     for ticker in sys.argv[1].split(','):
         filtered_by_ticker = filter_by_ticker(stocks_posts_list, ticker)

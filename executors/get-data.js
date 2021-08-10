@@ -6,8 +6,9 @@ const path = require('path');
 
 
 async function getData(body) {
-  const stockString = body.stocks;
-  const stocks = stockString.split(',');
+  // const stockString = body.stocks;
+  // const stocks = stockString.split(',');
+  const stocks = body.stocks;
   console.log("Stocks --> ", stocks)
   const data = await runSentimentAnalysis(stocks);
   console.log('look at this cool data ', data);
@@ -18,15 +19,15 @@ async function getData(body) {
 
 async function runSentimentAnalysis(stocks) {
   const cwd = spawnSync('pwd', {encoding: 'utf-8'}).stdout.slice(0, -1);
-  const python = spawnSync('python', ['sentiment/main.py', cwd, ...stocks], {encoding: 'utf-8', cwd});
+  const python = spawnSync('python', ['sentiment/main.py', cwd, stocks], {encoding: 'utf-8', cwd});
   console.log(python)
-  console.log(python.stdin);
   return readDataFromJson(cwd, stocks);
 }
 
-async function readDataFromJson(dir, stocks) {
+async function readDataFromJson(dir, stockString) {
   const data = [];
   console.log(stocks)
+  const stocks = stockString.split(',');
   for(let index in stocks) {
     const result = await fs.readFile(`${dir}/sentiment/data/${stocks[index]}.json`, {encoding: 'utf-8'})
     data.push(result);
