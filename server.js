@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const { getData } = require('./executors/get-data');
 const { pong } = require('./executors/pong');
+const cors = require('cors');
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -11,6 +12,7 @@ const port = process.env.PORT || 8080;
 // middleware goes here
 app.use(express.urlencoded({ extended: false}));
 app.use(express.json());
+app.use(cors());
 
 // routes go here
 app.get('/ping', pingController);

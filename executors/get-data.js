@@ -30,7 +30,7 @@ async function readDataFromJson(dir, stockString) {
   console.log(stocks)
   for(let index in stocks) {
     const result = await fs.readFile(`${dir}/sentiment/data/${stocks[index]}.json`, {encoding: 'utf-8'})
-    data.push(result);
+    data.push(JSON.parse(result));
   }
   return data;
 }
